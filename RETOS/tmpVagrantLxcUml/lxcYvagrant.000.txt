@@ -1,0 +1,96 @@
+instalacion
+=========================================
+000)
+# apt-get install lxc
+# apt-get install cgroup-lite redir
+;;ALTERNATIVO;;NO_INSTALAR;;;;;;;;;;;;;;;# apt-get install lxc-templates
+;;NO_INSTALAR;;;;;;;;;;;;;;;;;;;;;;;;;;;;# apt-get install vagrant
+# curl -O http://966b.http.dal05.cdn.softlayer.net/data-production/2f0b88eb857b0a4d0b71250f999f8873f0c3bc7b?filename=vagrant_1.4.3_x86_64.deb
+# dpkg -i vagrant_1.4.3_x86_64.deb
+# lxc-list
+        $ ifconfig lxcbr0
+        $ vagrant plugin install vagrant-lxc
+#visudo 
+  add the line:
+    Defaults        !tty_tickets
+        $ mkdir tmp
+        $ mkdir tmp/vagrantLxc1
+        $ cd tmp/vagrantLxc1 
+        $ vagrant init debian0lxc https://dl.dropboxusercontent.com/u/67225617/lxc-vagrant/lxc-wheezy64-puppet3-2013-07-27.box
+        $ vagrant up --provider=lxc --provision
+                (( $ VAGRANT_LOG=info vagrant up --provider=lxc ))
+# lxc-list
+# lxc-ps --lxc
+        $ vagrant ssh
+                $ commands_in_the_vagrantLxc0_box
+                $ commands_in_the_vagrantLxc0_box
+                $ commands_in_the_vagrantLxc0_box
+                $ commands_in_the_vagrantLxc0_box
+        $ vagrant halt
+        $ ls ~/.vagrant.d
+
+
+
+020) ssh alternativo        
+ssh vagrant@10.0.3.20 -p 22 -o Compression=yes -o DSAAuthentication=yes \
+  -o LogLevel=FATAL -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+  -o IdentitiesOnly=yes -i /home/aorta/.vagrant.d/insecure_private_key
+
+
+
+        
+        
+
+
+debian
+=======================================
+estamos usando wheezy ... https://packages.debian.org/wheezy
+  Linux wheezy-base 3.2.0-60-generic #91-Ubuntu SMP Wed Feb 19 03:54:44 UTC 2014 x86_64 GNU/Linux
+
+
+200)  como #
+  apt-get    update
+  apt-get -y upgrade
+  apt-get -y install build-essential autoconf automake
+  apt-get -y install git mercurial cvs subversion bzr
+  apt-get -y install python-dev python-pip python-setuptools python-virtualenv
+  apt-get -y install iputils-ping
+  apt-get -y install mc links vim joe nano
+  apt-get -y install unzip p7zip 
+          # apt-get -y install crypto++dev crypto++doc crypto++utils python-pycryptopp
+          # apt-get -y install octave
+  apt-get -y install mosh byobu
+  apt-get -y install gnupg
+  apt-get    clean    
+
+201)  como #
+  cd /opt
+  mkdir public
+  chown vagrant:vagrant public  
+  
+300)  como $
+  cd 
+  vim .vimrc
+  
+301)  como $
+  cd /opt/public
+  git clone https://github.com/joyent/node.git
+  cd node
+  ./configure
+  make
+301b) como #
+  cd /opt/public/node
+  make install
+301c) como $
+  node -v
+  npm -v
+  node helloworld.js 
+
+
+
+INFO
+=========================================
+600) ejemplo de localizacion del sistema de archivos de una maquina virtual lxc
+  /var/lib/lxc/vagrantLxc1_default_1393966973506_5367/rootfs
+
+
